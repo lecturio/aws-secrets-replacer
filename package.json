@@ -1,0 +1,16 @@
+{
+  "name": "aws-secrets-replacer",
+  "version": "1.0.0",
+  "description": "Replace placeholders in files with secrets from the AWS Secrets Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.301.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}

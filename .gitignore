@@ -1,3 +1,7 @@
+# Playground
+playground/replacements/*
+!playground/replacements/.gitkeep
+
 # Mac Finder
 .DS_Store
 

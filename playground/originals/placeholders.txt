@@ -1,0 +1,4 @@
+Content with 
+  %AWS_SECRET:ci/test/fakeSecret:ClientID% 
+and 
+  %AWS_SECRET:ci/test/fakeSecret:ClientSecret%

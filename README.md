@@ -1,4 +1,5 @@
 # aws-secrets-replacer
+
 Replaces placeholders with secrets stored in the AWS Secrets Manager. The placeholders start and end with % and contain the literal AWS_SECRET followed by a separator : and after the separator there is a string that represents a secret name, a separator again and a string with two possible values "key" and "value". The program replaces the placeholders with a secret retrieved from the AWS Secrets Manager by the name which it found in the placeholder after the first separator. Depending on the second variable it replaces it either with the key or the value.
 
 # Requirements
@@ -25,6 +26,28 @@ npm start -- /path/to/target/directory
 
 Replace /path/to/target/directory with the path to the directory containing the files you want to replace placeholders in.
 
+# Usage in Docker Container
+
+Build the Docker image by running the following command in the terminal from the root directory of your project:
+
+```bash
+docker build -t aws-secrets-replacer .
+```
+
+Run
+
+```bash
+docker run --rm \
+  --env AWS_ACCESS_KEY_ID=YOUR_AWS_ACCESS_KEY_ID \
+  --env AWS_SECRET_ACCESS_KEY=YOUR_AWS_SECRET_ACCESS_KEY \
+  --env AWS_REGION=YOUR_AWS_REGION \
+  -v /path/to/local/directory:/app/target \
+  aws-secrets-replacer /app/target
+
+```
+
+Replace YOUR_AWS_ACCESS_KEY_ID, YOUR_AWS_SECRET_ACCESS_KEY, and YOUR_AWS_REGION with your actual AWS credentials and region. Replace /path/to/local/directory with the path to the directory on your local machine that you want to process.
+
 # AWS Permissions
 
 To use this program, your IAM user must have permissions to read secrets from the AWS Secrets Manager. You can use the following policy to grant the necessary permissions:
@@ -47,6 +70,7 @@ To use this program, your IAM user must have permissions to read secrets from th
 ```
 
 # Use at Your Own Risk Disclaimer
+
 This program is provided "as is" without any warranties or guarantees of any kind, either expressed or implied. In no event shall the authors, contributors, or maintainers of this program be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this program, even if advised of the possibility of such damage.
 
 By using this program, you acknowledge and agree that you have read, understood, and accept the terms of this disclaimer, and that you are using the program at your sole risk. You further agree to indemnify, defend, and hold harmless the authors, contributors, and maintainers of this program from any and all claims, liabilities, damages, or expenses arising from your use of the program.

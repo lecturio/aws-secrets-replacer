@@ -14,4 +14,4 @@ RUN npm ci
 COPY . .
 
 # Run the index.js script when the container starts
-CMD ["node", "src/index.js"]
+ENTRYPOINT ["node", "src/index.js"]

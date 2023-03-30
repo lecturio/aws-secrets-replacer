@@ -10,9 +10,9 @@ rm -r "$SCRIPT_DIR"/replacements/* 2>/dev/null
 cp -pR "$SCRIPT_DIR"/originals/* "$SCRIPT_DIR"/replacements/
 
 # run the docker container
-docker run --rm -it --entrypoint /bin/bash\
+docker run --rm \
   --env AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" \
   --env AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY" \
   --env AWS_REGION="$AWS_REGION" \
   -v "$SCRIPT_DIR"/replacements:/app/target \
-  $DOCKER_CONTAINER 
+  $DOCKER_CONTAINER /app/target
